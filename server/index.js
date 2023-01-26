@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
+import UserRoutes from "./routes/user.js";
 
 const app = express();
 
@@ -10,6 +11,8 @@ dotenv.config();
 app.use(cors());
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
+
+app.use("/user", UserRoutes);
 
 const PORT = process.env.PORT || 5500;
 const mongo_username = process.env.MONGO_USERNAME;
